@@ -49,7 +49,7 @@ The VLFeat library:
 
     A. Vedaldi and B. Fulkerson, 
     "VLFeat: An Open and Portable Library of Computer Vision Algorithms", 2008, 
-    [http://www.vlfeat.org](http://www.vlfeat.org/)
+    http://www.vlfeat.org/
     
 The code implements some of the algorithms described in:
 
