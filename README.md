@@ -7,7 +7,10 @@ Matlab source code for the paper:
     in Proc. of the 15th Int. Conf. of the Biometrics Special Interest Group (BIOSIG 2016), 
     Darmstadt, Germany, pp. 1-5, September 21-23, 2016. ISBN: 978-3-8857-9654-1. 
     DOI: 10.1109/BIOSIG.2016.7736922
-    https://ieeexplore.ieee.org/document/7736922
+    
+Paper:
+
+https://ieeexplore.ieee.org/document/7736922
 
 Project page:
 
