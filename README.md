@@ -33,7 +33,7 @@ Typical modalities in multimodal ABC pipelines may include face, fingerprint, ir
 
 <div align="center">
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXN23IxLG_bleYggNEqLa83AYknrsY_1dqHA&s" alt="ABC4EU project logo" width="180"/>
+<img src="abc4eu.png" alt="ABC4EU project logo" width="180"/>
 
 </div>
 
@@ -229,6 +229,9 @@ https://ieeexplore.ieee.org/document/7736922
 ## 👥 Authors
 
 **A. Anand**, **R. Donida Labati**, **A. Genovese**, **E. Muñoz**, **V. Piuri**, **F. Scotti**, and **G. Sforza**
+
+Department of Computer Science
+Università degli Studi di Milano, Italy
 
 ---
 
