@@ -230,7 +230,7 @@ https://ieeexplore.ieee.org/document/7736922
 
 **A. Anand**, **R. Donida Labati**, **A. Genovese**, **E. Muñoz**, **V. Piuri**, **F. Scotti**, and **G. Sforza**
 
-Department of Computer Science
+Department of Computer Science<br/>
 Università degli Studi di Milano, Italy
 
 ---
