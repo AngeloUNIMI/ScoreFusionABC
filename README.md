@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXN23IxLG_bleYggNEqLa83AYknrsY_1dqHA&s" alt="ABC4EU project logo" width="220"/>
+<img src="abc4eu.png" alt="ABC4EU project logo" width="220"/>
 
 # 🛂 ScoreFusionABC
 
