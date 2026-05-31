@@ -1,73 +1,239 @@
-# Score Fusion in Multimodal Automated Border Controls
+<div align="center">
 
-Matlab source code for the paper:
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXN23IxLG_bleYggNEqLa83AYknrsY_1dqHA&s" alt="ABC4EU project logo" width="220"/>
 
-	A. Anand, R. Donida Labati, A. Genovese, E. Muñoz, V. Piuri, F. Scotti, G. Sforza, 
-    "Enhancing the performance of multimodal Automated Border Control systems", 
-    in Proc. of the 15th Int. Conf. of the Biometrics Special Interest Group (BIOSIG 2016), 
-    Darmstadt, Germany, pp. 1-5, September 21-23, 2016. ISBN: 978-3-8857-9654-1. 
-    DOI: 10.1109/BIOSIG.2016.7736922
-    https://ieeexplore.ieee.org/document/7736922
+# 🛂 ScoreFusionABC
+
+### Score Fusion in Multimodal Automated Border Control Systems
+
+[![MATLAB](https://img.shields.io/badge/MATLAB-R2016b%2B-orange?logo=mathworks)](https://www.mathworks.com/products/matlab.html)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![Paper](https://img.shields.io/badge/Paper-BIOSIG%202016-00629B)](https://ieeexplore.ieee.org/document/7736922)
+[![Project](https://img.shields.io/badge/Project-ABC4EU-green)](http://iebil.di.unimi.it/projects/abc4eu)
+[![Topic](https://img.shields.io/badge/Topic-Multimodal%20Biometrics-purple)](#overview)
+
+**MATLAB source code for the BIOSIG 2016 paper**  
+*Enhancing the performance of multimodal Automated Border Control systems*
+
+</div>
+
+---
+
+## 🧠 Overview
+
+**ScoreFusionABC** provides a MATLAB implementation of score-level fusion methods for **multimodal biometric verification** in the context of **Automated Border Control (ABC)** systems.
+
+The code is designed to combine biometric matcher outputs and quality information from multiple modalities in order to improve verification performance in border-control scenarios.
+
+Typical modalities in multimodal ABC pipelines may include face, fingerprint, iris, or other biometric traits. This repository focuses on the **fusion stage**, assuming that biometric scores and quality measures are already computed by external biometric systems.
+
+---
+
+## 🇪🇺 ABC4EU Context
+
+<div align="center">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXN23IxLG_bleYggNEqLa83AYknrsY_1dqHA&s" alt="ABC4EU project logo" width="180"/>
+
+</div>
+
+This repository is related to the **ABC4EU European project**, which investigated next-generation Automated Border Control technologies and multimodal biometric processing.
 
 Project page:
 
+```text
 http://iebil.di.unimi.it/projects/abc4eu
+```
 
-Citation:
+---
 
-    @InProceedings {biosig16,
-        author = {A. Anand and R. {{Donida Labati}} and A. Genovese and E. Muñoz and V. Piuri and F. Scotti and G. Sforza},
-        booktitle = {Proc. of the 15th Int. Conf. of the Biometrics Special Interest Group (BIOSIG 2016)},
-        title = {Enhancing the performance of multimodal Automated Border Control systems},
-        address = {Darmstadt, Germany},
-        pages = {1 - 5},
-        month = {9},
-        day = {21-23},
-        year = {2016}
-    }
+## 🔬 Processing Pipeline
 
-Main files:
+<div align="center">
 
-    - launch_scoreFusionABC.m: main file
+```mermaid
+flowchart LR
+    A[Biometric Matchers] --> B[DATA_scores]
+    C[Quality Estimators] --> D[DATA_qualities]
+    B --> E[Score Normalization]
+    D --> F[Quality Processing]
+    E --> G[Score Fusion]
+    F --> G
+    G --> H[Verification Scores]
+    H --> I[ROC / DET / EER Evaluation]
+```
 
-Required files:
+</div>
 
-    - ./DATA_scores: Biometric scores
-    - ./DATA_qualities: Biometric qualities
-    (Biometric scores and qualities must be computed using external softwares)
-    (see '.dat' files for details)
+The repository implements a complete experimental workflow for:
 
-Part of the code uses the mixture fitting algorithm described in the paper:
+- loading biometric scores and quality indicators,
+- preparing genuine and impostor comparisons,
+- applying score normalization and fusion strategies,
+- estimating performance using biometric verification metrics,
+- generating plots and statistics for analysis.
 
-    M. Figueiredo and A. K. Jain, "Unsupervised learning of
-    finite mixture models",  IEEE Transaction on Pattern Analysis
-    and Machine Intelligence, vol. 24, no. 3, pp. 381-396, March 2002.
-    http://www.lx.it.pt/~mtf/
-    http://www.lx.it.pt/~mtf/mixturecode2.zip
-    
-The VLFeat library:
+---
 
-    A. Vedaldi and B. Fulkerson, 
-    "VLFeat: An Open and Portable Library of Computer Vision Algorithms", 2008, 
-    [http://www.vlfeat.org](http://www.vlfeat.org/)
-    
-The code implements some of the algorithms described in:
+## 📁 Repository Structure
 
-    K. Nandakumar, Yi Chen, S. Dass, and A. Jain, “Likelihood ratio-based
-    biometric score fusion,” IEEE Trans. Pattern Anal. Mach. Intell., vol. 30,
-    no. 2, pp. 342–347, 2008.
-    
-    S. Mika, G. Ratsch, J. Weston, B. Scholkopf and K. R. Mullers, 
-    "Fisher discriminant analysis with kernels," Neural Networks for Signal 
-    Processing IX: Proceedings of the 1999 IEEE Signal Processing Society Workshop 
-    (Cat. No.98TH8468), Madison, WI, USA, 1999, pp. 41-48.
+```text
+ScoreFusionABC/
+│
+├── launch_scoreFusionABC.m     # Main MATLAB entry point
+│
+├── DATA_scores/                # Input biometric scores
+├── DATA_qualities/             # Input biometric quality measures
+│
+├── biometricUtil/              # Biometric utility functions
+├── calcoloROC/                 # ROC / DET / error-rate computation utilities
+├── fusions/                    # Score fusion algorithms
+├── mixturecode2/               # Finite mixture model utilities
+├── mLib/                       # Supporting MATLAB library functions
+├── util/                       # General-purpose helper functions
+│
+├── LICENSE                     # GPL-3.0 license
+└── README.md
+```
 
-    C. Chia, N. Sherkat, and L. Nolle, “Towards a best linear combination
-    for multimodal biometric fusion,” in Proc. of ICPR, 2010, pp. 1176–
-    1179.
-    
-    N. Damer, A. Opel, and A. Nouak, “Biometric source weighting in
-    multi-biometric fusion: towards a generalized and robust solution,” in
-    Proc. of EUSIPCO, 2014, pp. 1382–1386.
+---
 
-	
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/AngeloUNIMI/ScoreFusionABC.git
+cd ScoreFusionABC
+```
+
+### 2. Prepare the input data
+
+The code expects pre-computed biometric scores and quality values in the following folders:
+
+```text
+./DATA_scores/
+./DATA_qualities/
+```
+
+These values must be generated by external biometric matchers or quality-estimation software.
+
+See the `.dat` files in the repository for the expected input format.
+
+### 3. Run the main script
+
+Open MATLAB from the repository root and run:
+
+```matlab
+launch_scoreFusionABC
+```
+
+---
+
+## 📊 Outputs
+
+The framework supports analysis of biometric verification performance through metrics and plots such as:
+
+| Output | Description |
+|---|---|
+| Genuine/impostor scores | Score distributions for biometric comparisons |
+| ROC curves | Receiver Operating Characteristic analysis |
+| DET curves | Detection Error Tradeoff visualization |
+| EER | Equal Error Rate |
+| Fusion scores | Combined multimodal verification scores |
+| Quality-aware analysis | Use of biometric quality information in fusion |
+
+---
+
+## 🧩 Implemented / Referenced Fusion Ideas
+
+The repository includes code and experimental routines related to several score fusion strategies, including methods inspired by:
+
+- likelihood-ratio-based biometric score fusion,
+- quality-aware score fusion,
+- finite mixture models,
+- kernel Fisher discriminant analysis,
+- weighted score combinations for multibiometric systems.
+
+---
+
+## 📚 Related Methods and Dependencies
+
+Part of the code uses or refers to the following works and libraries.
+
+### Finite Mixture Models
+
+M. Figueiredo and A. K. Jain,  
+**“Unsupervised learning of finite mixture models,”**  
+*IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 24, no. 3, pp. 381–396, 2002.
+
+```text
+http://www.lx.it.pt/~mtf/
+http://www.lx.it.pt/~mtf/mixturecode2.zip
+```
+
+### VLFeat
+
+A. Vedaldi and B. Fulkerson,  
+**“VLFeat: An Open and Portable Library of Computer Vision Algorithms,”** 2008.
+
+```text
+http://www.vlfeat.org/
+```
+
+### Biometric Score Fusion References
+
+- K. Nandakumar, Y. Chen, S. Dass, and A. Jain,  
+  **“Likelihood ratio-based biometric score fusion,”**  
+  *IEEE Transactions on Pattern Analysis and Machine Intelligence*, 2008.
+
+- S. Mika, G. Rätsch, J. Weston, B. Schölkopf, and K. R. Müller,  
+  **“Fisher discriminant analysis with kernels,”**  
+  *Neural Networks for Signal Processing IX*, 1999.
+
+- C. Chia, N. Sherkat, and L. Nolle,  
+  **“Towards a best linear combination for multimodal biometric fusion,”**  
+  *ICPR*, 2010.
+
+- N. Damer, A. Opel, and A. Nouak,  
+  **“Biometric source weighting in multi-biometric fusion: towards a generalized and robust solution,”**  
+  *EUSIPCO*, 2014.
+
+---
+
+## 📖 Paper
+
+If you use this repository, please cite:
+
+```bibtex
+@InProceedings{biosig16,
+  author    = {A. Anand and R. Donida Labati and A. Genovese and E. Muñoz and V. Piuri and F. Scotti and G. Sforza},
+  title     = {Enhancing the performance of multimodal Automated Border Control systems},
+  booktitle = {Proc. of the 15th Int. Conf. of the Biometrics Special Interest Group (BIOSIG 2016)},
+  address   = {Darmstadt, Germany},
+  pages     = {1--5},
+  month     = {September},
+  year      = {2016},
+  doi       = {10.1109/BIOSIG.2016.7736922}
+}
+```
+
+Paper:
+
+```text
+https://ieeexplore.ieee.org/document/7736922
+```
+
+---
+
+## 👥 Authors
+
+**A. Anand**, **R. Donida Labati**, **A. Genovese**, **E. Muñoz**, **V. Piuri**, **F. Scotti**, and **G. Sforza**
+
+---
+
+## 📄 License
+
+This project is released under the **GNU General Public License v3.0**.
+
+See the [LICENSE](LICENSE) file for details.
